@@ -12,7 +12,7 @@ Setting up the Python environment
 First, install the following packages.
 
 ```bash
-sudo apt-get install build-essential python-dev python-pip
+sudo apt-get install build-essential python3-dev python3-pip
 ```
 
 `build-essential` and `python-dev` are used to compile C extensions. Pip is used to install system commands.
@@ -20,22 +20,23 @@ sudo apt-get install build-essential python-dev python-pip
 Next, install the following Pip packages.
 
 ```bash
-sudo pip install virtualenv uwsgi
+sudo pip3 install virtualenv uwsgi
 ```
 
 Next, create the Virtualenv for this tutorial.
 
 ```bash
-cd flask-uwsgi
-virtualenv env
-source env/bin/activate
-pip install flask
+mkdir /var/flask-uwsgi
+cd /var/flask-uwsgi
+virtualenv venv
+source venv/bin/activate
+pip3 install flask
 ```
 
 Next, run the Flask app using uWSGI.
 
 ```bash
-uwsgi --http 0.0.0.0:8080 --home env --wsgi-file flask_uwsgi.py --callable app --master
+uwsgi --http 0.0.0.0:8080 --home venv --wsgi-file flask_uwsgi.py --callable app --master
 ```
 
 You should be able to visit http://ubuntu.local:8080.
